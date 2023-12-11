@@ -1,6 +1,5 @@
 This is a task of selecting K elements from n distinct elements. ie n!/ (n-k)! * k!
 
-
 static ArrayList<ArrayList<Integer>> find_combinations(Integer n, Integer k) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
         helper(n, k, new ArrayList<>(), 1, result);
