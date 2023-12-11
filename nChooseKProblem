@@ -1,1 +1,25 @@
 This is a task of selecting K elements from n distinct elements. ie n!/ (n-k)! * k!
+
+
+static ArrayList<ArrayList<Integer>> find_combinations(Integer n, Integer k) {
+        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+        helper(n, k, new ArrayList<>(), 1, result);
+        return result;
+    }
+    private static void helper(int n, int k, ArrayList<Integer> current, int index, ArrayList<ArrayList<Integer>> result) {
+        if (current.size() == k) {
+            result.add(new ArrayList<>(current));
+            return;
+        }
+        for (int i = index; i <= n; i++) {
+            current.add(i);
+            helper(n, k, current, i+1, result);
+            current.remove(current.size()-1);  
+        }
+    }
+
+Time complexity:
+In the worst case, the algorithm explores all possible combinations, leading to a time complexity of O(n power k)
+Space complexity:
+O(n) due to the recursion call stack. In the worst case, the recursion depth can go up to n, and each recursive call consumes constant space. 
+Additionally, the space needed for the current ArrayList is proportional to the size of the input set but in this case, it's still O(n).
