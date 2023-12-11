@@ -45,3 +45,28 @@ public class LetterCasePermutation {
 
 Input S = a1b2
 output [a1b2, a1B2, A1b2, A1B2]
+
+Time Complexity:
+The time complexity is determined by the number of recursive calls and the work done in each call.
+
+Number of Recursive Calls:
+For each character in the input string, there are two recursive calls (for lowercase and uppercase).
+If the input string has n characters, and each character is a letter, there will be a total of 
+2 power n recursive calls.
+
+Work Done in Each Call:
+In each recursive call, we perform constant-time work (appending, deleting characters, and checking if the character is a letter).
+
+Therefore, the overall time complexity is  2 power n recursive calls. where n is the number of letters in the input string.
+
+
+The space complexity is determined by the maximum depth of the recursive call stack and the space used by the current StringBuilder.
+
+Call Stack:
+
+The maximum depth of the call stack is equal to the length of the input string. This is because each recursive call corresponds to processing one character in the string.
+StringBuilder:
+
+The space used by the current StringBuilder in each call is proportional to the length of the input string.
+Combining both aspects, the overall space complexity is 
+O(n), where n is the length of the input string.
