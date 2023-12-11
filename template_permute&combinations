@@ -1,0 +1,18 @@
+We can use following template to solve Permutations and combination problems
+
+function helper(subproblem, partial solution){
+    if(subProblem.size==0) { // base case for leaf worker
+	   print partial solution or append to global list
+	  
+	  }
+	  else
+    { // recursive code internal node
+	    for each choice c1, c2, c3, .... cK
+		     filling the left most blank
+	       ie add that into partial solution and Delegate
+		     Delegate -> helper(slightly smaller subproblem, slightly larger partial solution)
+	  }
+function overall(problem size n) :
+   intialize globalResult;
+   helper(fullproblemsize, blankslate)
+   return result
