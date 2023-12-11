@@ -1,0 +1,47 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class LetterCasePermutation {
+
+    public static void main(String[] args) {
+        String input = "a1b2";
+        List<String> result = letterCasePermutation(input);
+        System.out.println(result);
+    }
+
+    public static List<String> letterCasePermutation(String s) {
+        List<String> result = new ArrayList<>();
+        letterCasePermutationHelper(s, new StringBuilder(), result);
+        return result;
+    }
+
+    private static void letterCasePermutationHelper(String s, StringBuilder current, List<String> result) {
+        if (s.length() == 0) {
+            result.add(current.toString());
+            return;
+        }
+
+        char currentChar = s.charAt(0);
+        String remaining = s.substring(1);
+
+        // Skip non-alphabetic characters
+        if (!Character.isLetter(currentChar)) {
+            current.append(currentChar);
+            letterCasePermutationHelper(remaining, current, result);
+            current.deleteCharAt(current.length() - 1);
+        } else {
+            // Lowercase choice
+            current.append(Character.toLowerCase(currentChar));
+            letterCasePermutationHelper(remaining, current, result);
+            current.deleteCharAt(current.length() - 1);
+
+            // Uppercase choice
+            current.append(Character.toUpperCase(currentChar));
+            letterCasePermutationHelper(remaining, current, result);
+            current.deleteCharAt(current.length() - 1);
+        }
+    }
+}
+
+Input S = a1b2
+output [a1b2, a1B2, A1b2, A1B2]
