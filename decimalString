@@ -1,0 +1,22 @@
+package org.rudra.recursion;
+
+public class DecimalString {
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        decimalStringHelper(4, "");
+    }
+
+    private static void decimalStringHelper(final int n, final String slate) {
+        if (n == 0) {
+            System.out.println(slate);
+            return;
+        }
+
+        for (int i = 0; i < n; i++) {
+            decimalStringHelper(n - 1, slate + String.valueOf(i));
+        }
+        
+    }
+    
+}
