@@ -1,0 +1,16 @@
+static ArrayList<String> get_binary_strings(Integer n) {
+        
+       ArrayList<String> binaryStrings = new ArrayList<String>();
+       binaryStringHelper(n, "", binaryStrings);
+       return binaryStrings;
+    }
+ private static void binaryStringHelper(final int n, final String slate, 
+        final ArrayList<String> result) {
+        if (n == 0) {
+           result.add(slate);
+           return;
+        }
+
+        binaryStringHelper(n - 1, slate + "0",result);
+        binaryStringHelper(n - 1, slate + "1", result);
+    }
