@@ -1,0 +1,40 @@
+package org.rudra.recursion;
+
+import java.util.ArrayList;
+
+public class Subsets {
+
+    public static void main(String[] args) {
+        ArrayList<Integer> input = new ArrayList<>();
+        input.add(1);
+        input.add(2);
+        input.add(3);
+
+        ArrayList<String> result = generateSubsets(input);
+        System.out.println(result);
+    }
+
+    static ArrayList<String> generateSubsets(ArrayList<Integer> set) {
+        String s = "xy";
+        ArrayList<String> result = new ArrayList<String>();
+        generateSubsetsHelper(s, new StringBuilder(), 0, result);
+        return result;
+    }
+
+    private static void generateSubsetsHelper(String s, StringBuilder current, int index, ArrayList<String> result) {
+  
+         result.add((current.toString()));
+        // Iterate through the remaining elements and explore subsets
+        for (int i = index; i < s.length(); i++) {
+            // Include the current element in the subset
+            current.append(s.charAt(i));
+
+            // Recursively generate subsets with the remaining elements
+            generateSubsetsHelper(s, current, i + 1, result);
+
+            // Backtrack: Remove the current element before exploring subsets without it
+            current.deleteCharAt(current.length() - 1);
+        }
+    }
+}
+
