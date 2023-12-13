@@ -38,3 +38,52 @@ public class Subsets {
     }
 }
 
+Questions on subset problems:
+
+1) How would you explain the concept of recursion to someone who is not familiar with it?
+
+when a problem is divided into number of subproblems and each sub problem is exactly in the form of orignal problem then we can apply
+the recursion. smallest subproblem soultion becomes basecase for recursion.
+It's a process where a problem is broken down into smaller instances of the same problem until a base case is reached.
+Each recursive call works on a smaller portion of the problem, and the results are combined to solve the original problem. 
+
+
+2) Can you describe a scenario where recursion is a better solution than iteration?
+
+when the problem exhibits the following characteristics then we can use recursion
+
+Divide and Conquer Structure:
+	The problem can be broken down into smaller, similar subproblems.
+Self-Similarity:
+	Each subproblem can be solved using the same algorithm or a similar approach.
+Tree-Like Structures:
+Problems with tree-like structures (e.g., binary trees, recursive structures) often lend themselves well to recursive solutions.
+
+Iterative solutions might be more efficient in some cases, especially when memory usage or stack depth is a concern.
+
+3) What is the base case in the generateSubsetsHelper method, and why is it important in recursive functions?
+
+In the context of subset program, the base case ensures that once the length of the string becomes zero, the current partial solution (subset) is added to the result. Without the base case, the recursion would not know when to stop, and the subsets would not be generated correctly.
+
+Backtracking:
+
+4) What is backtracking, and how is it utilized in the generateSubsetsHelper method?
+
+Backtracking is a technique used while solving recursive subproblems.
+Backtracking explores different choices, and if a particular choice leads to a dead end, it backs up (backtracks) to the previous choice and explores an alternative path.
+
+in Subset problem backtracking removes the last character from the current subset (current.deleteCharAt(current.length() - 1)).
+This step allows the algorithm to explore subsets without the current character before moving on to the next choice.
+
+5) Why is it necessary to remove the last character (current.deleteCharAt(current.length() - 1)) in the backtracking step?
+   To explore different paths. one choice is already takencare and remaining choice will be explored by backtracking.
+
+Subset Generation:
+
+How does the program ensure that all possible subsets of the given string are generated?
+If the input string were "abc" instead of "xy," what would be the output, and how does the program handle different input strings?
+
+6) What is the time complexity of the generateSubsetsHelper method?
+
+Time Complexity: O(2^n)
+Space Complexity: O(n)
