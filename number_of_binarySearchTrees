@@ -38,3 +38,16 @@ static Long how_many_bsts(Integer n) {
         
         return ans;
     }
+
+
+Time complexity:
+  O(4 power n)/ root n
+
+T(n)=∑  T(i−1)⋅T(n−i)
+i=1
+n
+each term contributes a factor of 2. Since we have n terms at each level, the overall growth factor becomes.2 power n. Additionally another factor of 2 from summtion .
+so finally it is 4 power n.
+
+​
+
