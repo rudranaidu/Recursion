@@ -1,0 +1,42 @@
+package org.rudra.recursion;
+
+import java.util.ArrayList;
+
+public class PalindromicDecomposition {
+
+    public static void main(String[] args) {
+        ArrayList<String> result = new ArrayList<>();
+        palindromeDecompositionHelper("abba", 0, new ArrayList<String>(), result);
+        System.out.println(result);
+    }
+    
+    private static void palindromeDecompositionHelper(String input, int start, ArrayList<String> current, ArrayList<String> result) {
+        if (start == input.length()) {
+            result.add(String.join("|", current));
+            return;
+        }
+        
+        for (int end = start + 1; end <= input.length(); end++) {
+            String subString = input.substring(start, end);
+            if (isPalindrom(subString)) {
+                current.add(subString);
+                palindromeDecompositionHelper(input, end, current, result);
+                current.remove(current.size() - 1);
+            }
+        }
+    }
+    
+    private static boolean isPalindrom(String s) {
+        int left = 0;
+        int right = s.length() - 1;
+
+        while (left < s.length() && right > 0) {
+            if (!(s.charAt(left) == s.charAt(right))) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+}
