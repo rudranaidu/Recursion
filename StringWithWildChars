@@ -1,0 +1,40 @@
+import java.util.ArrayList;
+
+public class StringsFromWildcard {
+
+    public static void main(String[] args) {
+        String s = "1?10";
+        ArrayList<String> result = generateStringsFromWildcard(s);
+        System.out.println("Output: " + result);
+    }
+
+    static ArrayList<String> generateStringsFromWildcard(String s) {
+        ArrayList<String> result = new ArrayList<>();
+        generateStringsHelper(s.toCharArray(), 0, new StringBuilder(), result);
+        return result;
+    }
+
+    private static void generateStringsHelper(char[] s, int index, StringBuilder current, ArrayList<String> result) {
+        if (index == s.length) {
+            result.add(current.toString());
+            return;
+        }
+
+        if (s[index] == '?') {
+            // Replace '?' with '0' and recurse
+            current.append('0');
+            generateStringsHelper(s, index + 1, current, result);
+            current.deleteCharAt(current.length() - 1);
+
+            // Replace '?' with '1' and recurse
+            current.append('1');
+            generateStringsHelper(s, index + 1, current, result);
+            current.deleteCharAt(current.length() - 1);
+        } else {
+            // If the character is not a wildcard, continue with the next character
+            current.append(s[index]);
+            generateStringsHelper(s, index + 1, current, result);
+            current.deleteCharAt(current.length() - 1);
+        }
+    }
+}
