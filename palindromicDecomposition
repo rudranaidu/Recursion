@@ -40,3 +40,17 @@ public class PalindromicDecomposition {
         return true;
     }
 }
+
+
+This is variation of subset problem.
+
+The number of subsets (combinations of including or excluding characters) grows exponentially with the length of the string. 
+For each character, there are two choices: include or exclude. Hence,  it is 2 power n.
+O(n): For each subset, the algorithm checks if it is a palindrome, which requires linear time in the worst case.
+The palindrome check involves iterating through half of the characters in the subset. n * 2 power n.
+
+The space complexity is O(n), considering the space used by the call stack in the recursive calls.
+
+It's important to note that the time complexity O(n* 2 power n) is an upper bound, and the actual number of recursive calls may be less in practice 
+due to early pruning when a non-palindromic substring is encountered.
+
