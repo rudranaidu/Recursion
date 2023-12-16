@@ -1,0 +1,93 @@
+State Representation:
+
+The chessboard is represented as an N×N matrix.
+Each cell in the matrix can be either empty or occupied by a queen.
+Constraints:
+
+No two queens can be in the same row.
+No two queens can be in the same column.
+No two queens can be in the same diagonal.
+Objective:
+
+Find all possible ways to place N queens on the chessboard such that they do not threaten each other.
+Approach using Recursion:
+
+The recursive approach involves trying to place queens on each row, one row at a time.
+For each row, try placing a queen in each column and check if it violates any constraints.
+If a queen can be placed in a particular position, move on to the next row and repeat the process.
+If at any point it's not possible to place a queen without violating constraints, backtrack to the previous row and explore other possibilities.
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class NQueens {
+
+    public static void main(String[] args) {
+        int n = 4; // You can change the value of n for different board sizes
+        ArrayList<ArrayList<String>> result = solveNQueens(n);
+        printResult(result);
+    }
+
+    static ArrayList<ArrayList<String>> solveNQueens(int n) {
+        ArrayList<ArrayList<String>> result = new ArrayList<>();
+        char[][] board = new char[n][n];
+        for (char[] row : board) {
+            Arrays.fill(row, '.');
+        }
+
+        solveNQueensHelper(board, 0, result);
+        return result;
+    }
+
+    private static void solveNQueensHelper(char[][] board, int row, ArrayList<ArrayList<String>> result) {
+        if (row == board.length) {
+            result.add(createBoardCopy(board));
+            return;
+        }
+
+        for (int col = 0; col < board.length; col++) {
+            if (isSafe(board, row, col)) {
+                board[row][col] = 'Q';
+                solveNQueensHelper(board, row + 1, result);
+                board[row][col] = '.'; // Backtrack
+            }
+        }
+    }
+
+    private static boolean isSafe(char[][] board, int row, int col) {
+        // Check if it's safe to place a queen in the given position
+        // (i.e., no other queens in the same row, column, or diagonals)
+        for (int i = 0; i < row; i++) {
+            if (board[i][col] == 'Q') {
+                return false; // Same column
+            }
+            if (col - (row - i) >= 0 && board[i][col - (row - i)] == 'Q') {
+                return false; // Left diagonal
+            }
+            if (col + (row - i) < board.length && board[i][col + (row - i)] == 'Q') {
+                return false; // Right diagonal
+            }
+        }
+        return true;
+    }
+
+    private static ArrayList<String> createBoardCopy(char[][] board) {
+        ArrayList<String> copy = new ArrayList<>();
+        for (char[] row : board) {
+            copy.add(new String(row));
+        }
+        return copy;
+    }
+
+    private static void printResult(ArrayList<ArrayList<String>> result) {
+        for (ArrayList<String> board : result) {
+            for (String row : board) {
+                System.out.println(row);
+            }
+            System.out.println();
+        }
+    }
+}
+
+Time complexity of this problem is n* n!.  we have n rows and we need to traverse every row.
+It is not 2 power n -> this will be for making independent choices .. like subset problems ... whether we need to include the element or exclude the element.
