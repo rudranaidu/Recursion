@@ -14,3 +14,19 @@ static ArrayList<String> get_binary_strings(Integer n) {
         binaryStringHelper(n - 1, slate + "0",result);
         binaryStringHelper(n - 1, slate + "1", result);
     }
+
+
+
+Time complexity:
+
+The algorithm uses a recursive approach to generate binary strings.
+At each level of the recursion tree, there are two recursive calls, one for appending '0' and the other for appending '1'.
+The tree has a branching factor of 2, and the depth of the tree is n.
+Number of Recursive Calls:
+
+At each level of the recursion, the number of recursive calls doubles.
+The total number of recursive calls is 2^n.
+Time Complexity:
+
+The time complexity is determined by the number of recursive calls, which is 2^n.
+Therefore, the overall time complexity is O(2^n).
