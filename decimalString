@@ -1,22 +1,30 @@
-package org.rudra.recursion;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DecimalString {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        decimalStringHelper(4, "");
+        // Test with n = 4
+        List<String> decimalStrings = getDecimalStrings(4);
+        for (String str : decimalStrings) {
+            System.out.println(str);
+        }
     }
 
-    private static void decimalStringHelper(final int n, final String slate) {
+    public static List<String> getDecimalStrings(int n) {
+        List<String> decimalStrings = new ArrayList<>();
+        decimalStringHelper(n, "", decimalStrings);
+        return decimalStrings;
+    }
+
+    private static void decimalStringHelper(int n, String slate, List<String> result) {
         if (n == 0) {
-            System.out.println(slate);
+            result.add(slate);
             return;
         }
 
-        for (int i = 0; i < n; i++) {
-            decimalStringHelper(n - 1, slate + String.valueOf(i));
+        for (int i = 0; i <= 9; i++) {
+            decimalStringHelper(n - 1, slate + String.valueOf(i), result);
         }
-        
     }
-    
 }
