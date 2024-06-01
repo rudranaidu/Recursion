@@ -1,1 +1,18 @@
+Given a set of distinct integers, return all possible permutations.
+Example: Input: [1, 2, 3], Output: [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]].
 
+Permutations with Duplicates:
+Given a collection of integers that might contain duplicates, return all unique permutations.
+Example: Input: [1, 1, 2], Output: [[1, 1, 2], [1, 2, 1], [2, 1, 1]].
+
+Next Permutation:
+Implement a function to find the next lexicographical permutation of a list of numbers.
+Example: Input: [1, 2, 3], Output: [1, 3, 2].
+
+Kth Permutation Sequence:
+Given n and k, return the kth permutation sequence of numbers 1 to n.
+Example: Input: n = 3, k = 3, Output: "213".
+
+String Permutations:
+Given a string s, return all possible permutations of the string.
+Example: Input: "abc", Output: ["abc", "acb", "bac", "bca", "cab", "cba"].
