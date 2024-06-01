@@ -136,3 +136,26 @@ output:
 [1, 2, 2]
 [2]
 [2, 2]
+
+4) Bitwise Subsets:
+Generate all subsets of a set using a bitwise approach.
+Example: Input: [1, 2, 3], Output: [[], [1], [2], [1,2], [3], [1,3], [2,3], [1,2,3]].
+
+
+public static List<List<Integer>> subsets(int[] nums) {
+    List<List<Integer>> result = new ArrayList<>();
+    int n = nums.length;
+    int numSubsets = 1 << n; // 2^n subsets (left shift means multiplication by 2 ie 1<<n = 2^n , right shift is division by 2)
+
+    for (int i = 0; i < numSubsets; i++) {
+        List<Integer> subset = new ArrayList<>();
+        for (int j = 0; j < n; j++) {
+            if ((i & (1 << j)) != 0) { // Check if j-th bit is set
+                subset.add(nums[j]);
+            }
+        }
+        result.add(subset);
+    }
+
+    return result;
+}
