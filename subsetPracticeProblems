@@ -159,3 +159,17 @@ public static List<List<Integer>> subsets(int[] nums) {
 
     return result;
 }
+
+
+Example
+Let's go through an example with specific values to make this clearer:
+
+Example 1: Check if the 2nd Bit is Set
+Suppose i = 5 (which is 0101 in binary).
+We want to check if the 2nd bit (counting from 0) is set.
+
+int j = 2; // We want to check the 2nd bit
+int shifted = 1 << j; // 1 << 2 results in 0100 (binary for 4)
+int result = i & shifted; // 0101 & 0100 results in 0100 (binary for 4)
+
+boolean isSet = result != 0; // true, because 4 is not equal to 0
