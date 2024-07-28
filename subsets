@@ -14,8 +14,7 @@ public class Subsets {
         System.out.println(result);
     }
 
-    static ArrayList<String> generateSubsets(ArrayList<Integer> set) {
-        String s = "xy";
+    static ArrayList<String> generateSubsets(String s) {
         ArrayList<String> result = new ArrayList<String>();
         generateSubsetsHelper(s, new StringBuilder(), 0, result);
         return result;
