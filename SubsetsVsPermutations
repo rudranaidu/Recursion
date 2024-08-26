@@ -1,12 +1,14 @@
 Generating Subsets
-Definition: A subset is any combination of elements taken from a set, where the order does not matter and each element can either be included or excluded.
+Definition: A subset is any combination of elements taken from a set, where the order does not matter and each element can either
+be included or excluded.
 
 Example:
 
 For the set {1, 2, 3}, the subsets are: {}, {1}, {2}, {3}, {1, 2}, {1, 3}, {2, 3}, {1, 2, 3}.
 Algorithm Intuition:
 
-Recursive Backtracking: For each element in the set, decide whether to include it in the current subset or not. This results in a binary decision (include/exclude) for each element, leading to 2^n possible subsets.
+Recursive Backtracking: For each element in the set, decide whether to include it in the current subset or not. This results in 
+a binary decision (include/exclude) for each element, leading to 2^n possible subsets.
 Start with an empty subset.
 For each element, create two branches: one including the element and one excluding it.
 Recursively apply the same logic to the remaining elements.
