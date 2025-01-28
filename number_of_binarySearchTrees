@@ -46,8 +46,6 @@ Time complexity:
 T(n)=∑  T(i−1)⋅T(n−i)
 i=1
 n
-each term contributes a factor of 2. Since we have n terms at each level, the overall growth factor becomes.2 power n. Additionally another factor of 2 from summtion .
+each term contributes a factor of 2. Since we have n terms at each level, the overall growth factor becomes.2 power n.
+Additionally another factor of 2 from summtion .
 so finally it is 4 power n.
-
-​
-
