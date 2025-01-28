@@ -33,3 +33,13 @@ Output:
 [1, 3, 6],
 [1, 3, 7]
 ]
+
+
+
+Complexity : 
+  Time : the algorithm should touch every node ie N nodes
+         it should traverse with entire height H
+         So total complexity is O(N*H)
+         if it is balanced tree H = O(logN) , so complexity will be O(NlogN)
+         if it is skewed tree H = N, so complexity will be O(N^2).
+  Space : it is also same O(N logN) & O(N^2)
