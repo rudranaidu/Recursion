@@ -18,7 +18,6 @@ private static void permutationHelper(ArrayList<Integer> arr, ArrayList<Integer>
             permutationHelper(remaining, current, result);
             current.remove(current.size()-1); //backtrack
         }
-         
 }
 
 Time complexity:
