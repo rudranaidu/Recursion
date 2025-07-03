@@ -53,33 +53,45 @@ Key Points:
 - The order of elements matters in permutations.
 - Each permutation has exactly `n` elements.
 
-Permutation Generation Example Code:
-public static List<List<Integer>> permute(int[] nums) {
-    List<List<Integer>> result = new ArrayList<>();
-    generatePermutations(nums, 0, result);
-    return result;
-}
+Permutation Generation Example Code: video->https://www.youtube.com/watch?v=H232aocj7bQ&ab_channel=NikhilLohia
+import java.util.*;
 
-private static void generatePermutations(int[] nums, int start, List<List<Integer>> result) {
-    if (start == nums.length) {
-        List<Integer> permutation = new ArrayList<>();
-        for (int num : nums) {
-            permutation.add(num);
+public class Permutations {
+
+    public static List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> resultList = new ArrayList<>();
+        backtrack(resultList, new ArrayList<>(), nums);
+        return resultList;
+    }
+
+    private static void backtrack(List<List<Integer>> resultList, List<Integer> tempList, int[] nums) {
+        // If we match the length, it is a permutation
+        if (tempList.size() == nums.length) {
+            resultList.add(new ArrayList<>(tempList));
+            return;
         }
-        result.add(permutation);
-    } else {
-        for (int i = start; i < nums.length; i++) {
-            swap(nums, start, i);
-            generatePermutations(nums, start + 1, result);
-            swap(nums, start, i); // backtrack
+        for (int number : nums) {
+            // Skip if we get same element
+            if (tempList.contains(number))
+                continue;
+
+            // Add the new element
+            tempList.add(number);
+
+            // Go back to try other elements
+            backtrack(resultList, tempList, nums);
+
+            // Remove the element
+            tempList.remove(tempList.size() - 1);
         }
     }
-}
 
-private static void swap(int[] nums, int i, int j) {
-    int temp = nums[i];
-    nums[i] = nums[j];
-    nums[j] = temp;
+    // Example usage
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 3};
+        List<List<Integer>> permutations = permute(nums);
+        System.out.println(permutations);
+    }
 }
 
  Summary of Differences
