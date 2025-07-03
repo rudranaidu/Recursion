@@ -19,21 +19,40 @@ The total number of subsets of a set with n elements is 2^n.
 The order of elements within a subset does not matter.
 Subsets can vary in size from 0 to n elements.
 
+import java.util.*;
 
-public static List<List<Integer>> subsets(int[] nums) {
-    List<List<Integer>> result = new ArrayList<>();
-    generateSubsets(0, nums, new ArrayList<>(), result);
-    return result;
-}
+public class Subsets {
 
-private static void generateSubsets(int index, int[] nums, List<Integer> current, List<List<Integer>> result) {
-    result.add(new ArrayList<>(current));
-    for (int i = index; i < nums.length; i++) {
-        current.add(nums[i]);
-        generateSubsets(i + 1, nums, current, result);
-        current.remove(current.size() - 1);
+    public static List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> resultList = new ArrayList<>();
+        backtrack(resultList, new ArrayList<>(), nums, 0);
+        return resultList;
+    }
+
+    private static void backtrack(List<List<Integer>> resultList, List<Integer> tempList, int[] nums, int start) {
+        // Add the current subset
+        resultList.add(new ArrayList<>(tempList));
+        for (int i = start; i < nums.length; i++) {
+            // Include nums[i]
+            tempList.add(nums[i]);
+            backtrack(resultList, tempList, nums, i + 1);
+            // Exclude nums[i] (backtrack)
+            tempList.remove(tempList.size() - 1);
+        }
+    }
+
+    // Example usage
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 3};
+        List<List<Integer>> result = subsets(nums);
+        System.out.println(result);
     }
 }
+For subsets (the power set), every combination of elements (including the empty set and all partial sets) is a valid subset.
+Therefore, you want to record a result at every recursion level, not just at the deepest one.
+The recursion naturally terminates when start exceeds the last index because the loop stops.
+
+
 
 Generating Permutations
   A permutation is an arrangement of elements in a specific order. Every element appears exactly once in each permutation.
