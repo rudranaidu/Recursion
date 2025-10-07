@@ -62,7 +62,8 @@ Iterative solutions might be more efficient in some cases, especially when memor
 
 3) What is the base case in the generateSubsetsHelper method, and why is it important in recursive functions?
 
-In the context of subset program, the base case ensures that once the length of the string becomes zero, the current partial solution (subset) is added to the result. Without the base case, the recursion would not know when to stop, and the subsets would not be generated correctly.
+In the context of subset program, the base case ensures that once the length of the string becomes zero, the current partial solution (subset) is added to the result.
+Without the base case, the recursion would not know when to stop, and the subsets would not be generated correctly.
 
 Backtracking:
 
