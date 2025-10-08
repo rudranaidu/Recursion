@@ -22,6 +22,14 @@ Permutations Vs combinations:
 
   in permutations , order matters but in combinations there is no need of order
   lets take an example with 3 array elements [A,B,C] if we want to select 2 elements out of 3  what are different choices
+
+Combinations:
+  When order doesn’t matter, [A, B] and [B, A] are the same combination
+ So we get:
    [A B] [B C] [A C]  --> combinations
+
+  Permutations:
+    Now order matters — [A, B] and [B, A] are different.
    [A B] [B A] [B C] [C B] [A C] [C A] --> permutations --> 3!
+    P(n,k)= n!/(n-k)!​ = 3!​=6
 
