@@ -37,6 +37,16 @@ public class Subsets {
     }
 }
 
+Key idea:
+At each index, you have two choices —
+✅ include the element
+❌ exclude the element
+
+That’s why there are 2^n possible subsets.
+
+“Subset problems are about making binary decisions at each index — include or exclude.
+This creates a power set of size 2ⁿ.”
+
 Questions on subset problems:
 
 1) How would you explain the concept of recursion to someone who is not familiar with it?
