@@ -1,3 +1,26 @@
+public class BinaryStringGenerator {
+
+	public static void main(String[] args) {
+		ArrayList<ArrayList<Integer>> resultList = new ArrayList();
+		binaryStringGenerator(3,new ArrayList<Integer>(),resultList);
+		for(ArrayList<Integer> binaryNumber:resultList) {
+			System.out.println(binaryNumber);
+		}
+	}
+	
+	private static void binaryStringGenerator(int n, ArrayList<Integer> currentNumber, ArrayList<ArrayList<Integer>> resultList) {
+		if(n==0) {
+			resultList.add(new ArrayList<Integer>(currentNumber));
+			return;
+		}
+		for(int i=0;i<=1;i++) {
+			currentNumber.add(i);
+			binaryStringGenerator(n-1,currentNumber,resultList);
+			currentNumber.remove(currentNumber.size()-1);
+		}
+	}
+}
+
 static ArrayList<String> get_binary_strings(Integer n) {
         
        ArrayList<String> binaryStrings = new ArrayList<String>();
