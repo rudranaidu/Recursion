@@ -21,6 +21,8 @@ public class BinaryStringGenerator {
 	}
 }
 
+2nd Method:
+
 static ArrayList<String> get_binary_strings(Integer n) {
         
        ArrayList<String> binaryStrings = new ArrayList<String>();
