@@ -1,23 +1,38 @@
-    static ArrayList<ArrayList<Integer>> get_permutations(ArrayList<Integer> arr) {
-        // Write your code here.
-        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
-        permutationHelper(arr, new ArrayList<Integer>(), result);
-        return result;
+import java.util.ArrayList;
+
+public class PermutationGenerator {
+    public static void main(String[] args) {
+        int[] a = {1, 2, 3};
+        ArrayList<Integer> inputList = new ArrayList<>();
+        for (int i : a) {
+            inputList.add(i);
+        }
+        ArrayList<ArrayList<Integer>> resultList = new ArrayList<>();
+        permutationHelper(inputList, new ArrayList<Integer>(), resultList);
+        for (ArrayList<Integer> permutation : resultList) {
+            System.out.println(permutation);
+        }
     }
 
-private static void permutationHelper(ArrayList<Integer> arr, ArrayList<Integer> current , ArrayList<ArrayList<Integer>> result){
-       if(arr.size() ==0) {
-           result.add(new ArrayList<Integer> (current));
-           return;
-       }
-        for(int i=0 ;i< arr.size(); i++) {
-            int currentElement = arr.get(i);
-            current.add(currentElement);
-            ArrayList<Integer> remaining = new ArrayList<Integer>(arr);
-            remaining.remove(i);
-            permutationHelper(remaining, current, result);
-            current.remove(current.size()-1); //backtrack
+    private static void permutationHelper(ArrayList<Integer> inputList, ArrayList<Integer> currentPermutation, ArrayList<ArrayList<Integer>> resultList) {
+        // Base case: If no elements left in inputList, add current permutation to result
+        if (inputList.size() == 0) {
+            resultList.add(new ArrayList<>(currentPermutation));
+            return;
         }
+        // Try each element from inputList as the next element in permutation
+        for (int i = 0; i < inputList.size(); i++) {
+            // Include the current element
+            currentPermutation.add(inputList.get(i));
+            // Create a new list excluding the current element
+            ArrayList<Integer> remainingList = new ArrayList<>(inputList);
+            remainingList.remove(i);
+            // Recurse with the remaining elements
+            permutationHelper(remainingList, currentPermutation, resultList);
+            // Backtrack by removing the last added element
+            currentPermutation.remove(currentPermutation.size() - 1);
+        }
+    }
 }
 
 Time complexity:
